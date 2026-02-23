@@ -314,3 +314,39 @@ Report: `{'total_cards': 2, 'matches_played': 1, 'avg_rating': 1175, 'platform_s
 | `generate_tournament_report` | `total_cards`, `matches_played`, `avg_rating`, `platform_status` |
 
 If a method is not in this table, use the subject’s expected output for that exercise as the target shape. Keep logic simple; the focus is on abstract patterns and consistent interfaces, not deep game balance.
+
+
+cards informations :
+
+        self._creatures = [
+            {"name": "Fire Dragon", "cost": 5, "rarity": "Legendary", "attack": 7, "health": 5},
+            {"name": "Goblin Warrior", "cost": 2, "rarity": "Common", "attack": 2, "health": 1},
+            {"name": "Ice Wizard", "cost": 4, "rarity": "Rare", "attack": 3, "health": 4},
+            {"name": "Lightning Elemental", "cost": 3, "rarity": "Uncommon", "attack": 4, "health": 2},
+            {"name": "Stone Golem", "cost": 6, "rarity": "Rare", "attack": 5, "health": 8},
+            {"name": "Shadow Assassin", "cost": 3, "rarity": "Uncommon", "attack": 5, "health": 2},
+            {"name": "Healing Angel", "cost": 4, "rarity": "Rare", "attack": 2, "health": 6},
+            {"name": "Forest Sprite", "cost": 1, "rarity": "Common", "attack": 1, "health": 1},
+        ]
+        
+        self._spells = [
+            {"name": "Lightning Bolt", "cost": 3, "rarity": "Common", "effect_type": "damage"},
+            {"name": "Healing Potion", "cost": 2, "rarity": "Common", "effect_type": "heal"},
+            {"name": "Fireball", "cost": 4, "rarity": "Uncommon", "effect_type": "damage"},
+            {"name": "Shield Spell", "cost": 1, "rarity": "Common", "effect_type": "buff"},
+            {"name": "Meteor", "cost": 8, "rarity": "Legendary", "effect_type": "damage"},
+            {"name": "Ice Shard", "cost": 2, "rarity": "Common", "effect_type": "damage"},
+            {"name": "Divine Light", "cost": 5, "rarity": "Rare", "effect_type": "heal"},
+            {"name": "Magic Missile", "cost": 1, "rarity": "Common", "effect_type": "damage"},
+        ]
+        
+        self._artifacts = [
+            {"name": "Mana Crystal", "cost": 2, "rarity": "Common", "durability": 5, "effect": "Permanent: +1 mana per turn"},
+            {"name": "Sword of Power", "cost": 3, "rarity": "Uncommon", "durability": 3, "effect": "Permanent: +2 attack to equipped creature"},
+            {"name": "Ring of Wisdom", "cost": 4, "rarity": "Rare", "durability": 4, "effect": "Permanent: Draw an extra card each turn"},
+            {"name": "Shield of Defense", "cost": 5, "rarity": "Rare", "durability": 6, "effect": "Permanent: +3 health to all friendly creatures"},
+            {"name": "Crown of Kings", "cost": 7, "rarity": "Legendary", "durability": 8, "effect": "Permanent: +1 cost reduction to all cards"},
+            {"name": "Boots of Speed", "cost": 2, "rarity": "Uncommon", "durability": 2, "effect": "Permanent: Cards cost 1 less mana"},
+            {"name": "Cloak of Shadows", "cost": 3, "rarity": "Uncommon", "durability": 3, "effect": "Permanent: Creatures have stealth"},
+            {"name": "Staff of Elements", "cost": 6, "rarity": "Legendary", "durability": 7, "effect": "Permanent: +1 spell damage"},
+        ]
