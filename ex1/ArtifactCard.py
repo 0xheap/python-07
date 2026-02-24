@@ -22,6 +22,12 @@ class ArtifactCard(Card):
 
     def play(self, game_state: dict[str, Any]) -> dict[str, Any]:
         """Describe playing this artifact (permanent)."""
+        available_mana = game_state.get('mana', 0)
+        if not self.is_playable(available_mana):
+                    return {
+                        'error': 'Not enough mana to play this card.',
+                        'playable': False
+                    }
         return {
             "card_played": self.name,
             "mana_used": self.cost,

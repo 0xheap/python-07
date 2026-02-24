@@ -16,8 +16,8 @@ class FantasyCardFactory(CardFactory):
     def __init__(self) -> None:
         self._supported_types = {
             "creatures": ["dragon", "goblin"],
-            "spells": ["fireball", "lightning_bolt"],
-            "artifacts": ["mana_crystal"],
+            "spells": ["fireball"],
+            "artifacts": ["mana_ring"],
         }
 
     def create_creature(
@@ -62,9 +62,9 @@ class FantasyCardFactory(CardFactory):
         self,
         name_or_power: str | int | None = None,
     ) -> Card:
-        """Create a magical artifact (e.g. Mana Crystal)."""
+        """Create a magical artifact (e.g. Mana Ring)."""
         return ArtifactCard(
-            "Mana Crystal",
+            "Mana Ring",
             2,
             "Rare",
             durability=3,

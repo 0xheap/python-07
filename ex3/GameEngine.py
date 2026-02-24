@@ -27,11 +27,10 @@ class GameEngine:
         if self._factory is None or self._strategy is None:
             raise ValueError("Engine is not configured with factory and strategy")
 
-        # Build a small fantasy hand similar to the subject example.
         hand = [
-            self._factory.create_spell("lightning_bolt"),
-            self._factory.create_artifact("mana_crystal"),
             self._factory.create_creature("dragon"),
+            self._factory.create_creature("goblin"),
+            self._factory.create_spell("lightning_bolt"),
         ]
         battlefield: list[Any] = []
 

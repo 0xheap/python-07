@@ -6,8 +6,8 @@ from ex3.GameEngine import GameEngine
 
 
 def main() -> None:
-    print("=== DataDeck Game Engine ===")
-    print("Configuring Fantasy Card Game...")
+    print("\n=== DataDeck Game Engine ===")
+    print("\nConfiguring Fantasy Card Game...")
 
     factory = FantasyCardFactory()
     strategy = AggressiveStrategy(mana_budget=5)
@@ -18,7 +18,7 @@ def main() -> None:
     print(f"Strategy: {strategy.get_strategy_name()}")
     print(f"Available types: {factory.get_supported_types()}")
 
-    print("Simulating aggressive turn...")
+    print("\nSimulating aggressive turn...")
     sim_result = engine.simulate_turn()
     hand_desc = ", ".join(sim_result["hand"])
     print(f"Hand: [{hand_desc}]")

@@ -10,7 +10,7 @@ from ex1.SpellCard import SpellCard
 def main() -> None:
     print("=== DataDeck Deck Builder ===")
     print("Building deck with different card types...")
-
+    game_states = {'mana': 10}
     deck = Deck()
     deck.add_card(CreatureCard("Fire Dragon", 5, "Legendary", 7, 5))
     deck.add_card(SpellCard("Lightning Bolt", 3, "Common", "damage"))
@@ -26,13 +26,9 @@ def main() -> None:
             "Spell" if isinstance(card, SpellCard) else "Artifact"
         )
         print(f"Drew: {card.name} ({card_type})")
-        print(f"Play result: {card.play({'mana': mana})}")
+        print(f"Play result: {card.play(game_states)}")
 
     print("\nPolymorphism in action: Same interface, different card behaviors!")
-    print(
-        "How does polymorphism enable the Deck to work with any card type?"
-        "\nWhat are the benefits of this design pattern for card game systems?"
-    )
 
 
 if __name__ == "__main__":
