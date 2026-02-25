@@ -2,10 +2,10 @@
 
 from typing import Any
 
-from ex3.GameStrategy import GameStrategy
 from ex0.Card import Card
 from ex0.CreatureCard import CreatureCard
 from ex1.SpellCard import SpellCard
+from ex3.GameStrategy import GameStrategy
 
 
 class AggressiveStrategy(GameStrategy):
@@ -18,8 +18,8 @@ class AggressiveStrategy(GameStrategy):
         """
         Play low-cost cards from hand until mana budget is used.
 
-        - Prefer cheaper cards first (board presence).
-        - Treat creatures and damage spells as sources of damage.
+        - Prefer cheaper cards first for board presence.
+        - Calculate damage based on played creatures and spells.
         """
         sorted_hand = sorted(hand, key=self._card_cost)
 
@@ -27,9 +27,19 @@ class AggressiveStrategy(GameStrategy):
         cards_played: list[str] = []
         damage_dealt = 0
 
+        available_targets = []
+        if len(battlefield) > 0:
+            available_targets.extend(battlefield)
+        
+        available_targets.append("Enemy Player")
+
+        prioritized = self.prioritize_targets(available_targets)
+        primary_target = prioritized[0] if prioritized else "Enemy Player"
+
         for card in sorted_hand:
             if mana_used + card.cost > self._mana_budget:
                 continue
+            
             mana_used += card.cost
             cards_played.append(card.name)
 
@@ -38,10 +48,9 @@ class AggressiveStrategy(GameStrategy):
             elif isinstance(card, SpellCard):
                 damage_dealt += card.cost
 
-        targets_attacked = ["Enemy Player"] if damage_dealt > 0 else []
+        targets_attacked = [primary_target] if damage_dealt > 0 else []
 
         return {
-            "strategy": self.get_strategy_name(),
             "cards_played": cards_played,
             "mana_used": mana_used,
             "targets_attacked": targets_attacked,
@@ -50,15 +59,16 @@ class AggressiveStrategy(GameStrategy):
 
     @staticmethod
     def _card_cost(card: Card) -> int:
-        """Helper used as sort key; no lambdas per constraints."""
+        """Helper used as sort key."""
         return card.cost
 
     def get_strategy_name(self) -> str:
+        """Return the name of the strategy."""
         return "AggressiveStrategy"
 
     def prioritize_targets(self, available_targets: list[Any]) -> list[Any]:
         """
-        Prioritize enemy player if present, otherwise keep original order.
+        Prioritize the enemy player if present, otherwise keep original order.
         """
         if "Enemy Player" in available_targets:
             return ["Enemy Player"] + [t for t in available_targets if t != "Enemy Player"]

@@ -6,8 +6,8 @@ from typing import Any
 from ex0.Card import Card
 from ex0.CreatureCard import CreatureCard
 
-from .ArtifactCard import ArtifactCard
-from .SpellCard import SpellCard
+from ex1.ArtifactCard import ArtifactCard
+from ex1.SpellCard import SpellCard
 
 
 class Deck:
@@ -25,7 +25,7 @@ class Deck:
         for i, card in enumerate(self._cards):
             if card.name == card_name:
                 self._cards.pop(i)
-                return True
+                return True 
         return False
 
     def shuffle(self) -> None:

@@ -19,7 +19,6 @@ def main() -> None:
     print(f"Deck stats: {deck.get_deck_stats()}")
 
     print("\nDrawing and playing cards:")
-    mana = 10
     for _ in range(3):
         card = deck.draw_card()
         card_type = "Creature" if isinstance(card, CreatureCard) else (

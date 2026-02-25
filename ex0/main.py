@@ -12,10 +12,11 @@ def main() -> None:
     print("CreatureCard Info:")
     print(dragon.get_card_info())
 
-    available_mana = 6
+    game_state = {"mana": 6}
+    available_mana = game_state["mana"]
     print(f"\nPlaying Fire Dragon with {available_mana} mana available:")
     print(f"Playable: {dragon.is_playable(available_mana)}")
-    print(f"Play result: {dragon.play({'mana': available_mana})}")
+    print(f"Play result: {dragon.play(game_state)}")
 
     print("\nFire Dragon attacks Goblin Warrior:")
     print(f"Attack result: {dragon.attack_target('Goblin Warrior')}")
