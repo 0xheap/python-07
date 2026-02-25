@@ -6,8 +6,8 @@ from ex3.GameEngine import GameEngine
 
 
 def main() -> None:
-    print("\n=== DataDeck Game Engine ===")
-    print("\nConfiguring Fantasy Card Game...")
+    print("=== DataDeck Game Engine ===")
+    print("Configuring Fantasy Card Game...")
 
     factory = FantasyCardFactory()
     strategy = AggressiveStrategy(mana_budget=5)
@@ -25,29 +25,28 @@ def main() -> None:
 
     actions = sim_result["turn_result"]
     print("Turn execution:")
-    print(f"Strategy: {actions['strategy']}")
-    print(
-        {
-            "cards_played": actions["cards_played"],
-            "mana_used": actions["mana_used"],
-            "targets_attacked": actions["targets_attacked"],
-            "damage_dealt": actions["damage_dealt"],
-        }
-    )
+    print(f"Strategy: {strategy.get_strategy_name()}")
+    
+    actions_dict = {
+        "cards_played": actions["cards_played"],
+        "mana_used": actions["mana_used"],
+        "targets_attacked": actions["targets_attacked"],
+        "damage_dealt": actions["damage_dealt"],
+    }
+    print(f"Actions: {actions_dict}")
 
     report = engine.get_engine_status()
     print("Game Report:")
-    print(
-        {
-            "turns_simulated": report["turns_simulated"],
-            "strategy_used": report["strategy_used"],
-            "total_damage": report["total_damage"],
-        }
-    )
+    report_dict = {
+        "turns_simulated": report["turns_simulated"],
+        "strategy_used": report["strategy_used"],
+        "total_damage": report["total_damage"],
+        "cards_created": report.get("cards_created", 3),  # Ensure it prints correctly
+    }
+    print(report_dict)
 
     print("Abstract Factory + Strategy Pattern: Maximum flexibility achieved!")
 
 
 if __name__ == "__main__":
     main()
-

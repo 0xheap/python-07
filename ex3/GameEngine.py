@@ -32,7 +32,7 @@ class GameEngine:
             self._factory.create_creature("goblin"),
             self._factory.create_spell("lightning_bolt"),
         ]
-        battlefield: list[Any] = []
+        battlefield: list[Any] = ["Enemy Player"]
 
         result = self._strategy.execute_turn(hand, battlefield)
 

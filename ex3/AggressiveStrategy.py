@@ -17,9 +17,6 @@ class AggressiveStrategy(GameStrategy):
     def execute_turn(self, hand: list[Card], battlefield: list[Any]) -> dict[str, Any]:
         """
         Play low-cost cards from hand until mana budget is used.
-
-        - Prefer cheaper cards first for board presence.
-        - Calculate damage based on played creatures and spells.
         """
         sorted_hand = sorted(hand, key=self._card_cost)
 
@@ -27,13 +24,7 @@ class AggressiveStrategy(GameStrategy):
         cards_played: list[str] = []
         damage_dealt = 0
 
-        available_targets = []
-        if len(battlefield) > 0:
-            available_targets.extend(battlefield)
-        
-        available_targets.append("Enemy Player")
-
-        prioritized = self.prioritize_targets(available_targets)
+        prioritized = self.prioritize_targets(battlefield)
         primary_target = prioritized[0] if prioritized else "Enemy Player"
 
         for card in sorted_hand:

@@ -5,8 +5,8 @@ from typing import Any
 
 from ex0.Card import Card
 from ex0.CreatureCard import CreatureCard
-from ex1.SpellCard import SpellCard
 from ex1.ArtifactCard import ArtifactCard
+from ex1.SpellCard import SpellCard
 from ex3.CardFactory import CardFactory
 
 
@@ -50,7 +50,7 @@ class FantasyCardFactory(CardFactory):
             key = name_or_power.lower()
             if key == "fireball":
                 return SpellCard("Fireball", 4, "Rare", "damage")
-            if key == "lightning_bolt":
+            if key == "lightning_bolt" or key == "lightning bolt":
                 return SpellCard("Lightning Bolt", 3, "Common", "damage")
 
         if isinstance(name_or_power, int) and name_or_power >= 4:
@@ -63,8 +63,13 @@ class FantasyCardFactory(CardFactory):
         name_or_power: str | int | None = None,
     ) -> Card:
         """Create a magical artifact (e.g. Mana Ring)."""
+        # USE the parameter to satisfy flake8!
+        artifact_name = "Mana Ring"
+        if isinstance(name_or_power, str) and name_or_power:
+            artifact_name = name_or_power.replace("_", " ").title()
+
         return ArtifactCard(
-            "Mana Ring",
+            artifact_name,
             2,
             "Rare",
             durability=3,
@@ -92,4 +97,3 @@ class FantasyCardFactory(CardFactory):
     def get_supported_types(self) -> dict[str, Any]:
         """Return supported creature, spell, and artifact types."""
         return self._supported_types.copy()
-
