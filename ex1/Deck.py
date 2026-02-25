@@ -41,9 +41,9 @@ class Deck:
     def get_deck_stats(self) -> dict[str, Any]:
         """Return total_cards, creatures, spells, artifacts, avg_cost."""
         total = len(self._cards)
-        creatures = sum(1 for c in self._cards if isinstance(c, CreatureCard))
-        spells = sum(1 for c in self._cards if isinstance(c, SpellCard))
-        artifacts = sum(1 for c in self._cards if isinstance(c, ArtifactCard))
+        creatures = sum(c.cost for c in self._cards if isinstance(c, CreatureCard))
+        spells = sum(c.cost for c in self._cards if isinstance(c, SpellCard))
+        artifacts = sum(c.cost for c in self._cards if isinstance(c, ArtifactCard))
         total_cost = sum(c.cost for c in self._cards)
         avg_cost = total_cost / total if total else 0.0
         return {

@@ -56,7 +56,7 @@ class EliteCard(Card, Combatable, Magical):
             "defender": self.name,
             "damage_taken": damage_taken,
             "damage_blocked": min(incoming_damage, self.defense_power),
-            "still_alive": True
+            "still_alive": True if damage_taken > 0 else False
         }
 
     def get_combat_stats(self) -> dict[str, Any]:
@@ -66,12 +66,12 @@ class EliteCard(Card, Combatable, Magical):
             "defense_power": self.defense_power
         }
 
-    # --- From Magical Interface ---
+
     def cast_spell(
         self, spell_name: str, targets: list[Any]
     ) -> dict[str, Any]:
         """Cast a spell on the given targets."""
-        mana_cost = 4  # Simple fixed cost for demonstration
+        mana_cost = 4
         return {
             "caster": self.name,
             "spell": spell_name,

@@ -15,7 +15,7 @@ def main() -> None:
     print("- Combatable: ['attack', 'defend', 'get_combat_stats']")
     print("- Magical: ['cast_spell', 'channel_mana', 'get_magic_stats']")
 
-    print("\nPlaying Arcane Warrior (Elite Card):")
+    print("\nPlaying Arcane Warrior (Elite Card):\n")
     print(f"Play result: {card.play({'mana': 10})}")
 
     print("\nCombat phase:")
@@ -27,10 +27,6 @@ def main() -> None:
     print(f"Mana channel: {card.channel_mana(3)}")
 
     print("\nMultiple interface implementation successful!")
-    print(
-        "How do multiple interfaces enable flexible card design? What are"
-        "\nthe advantages of separating combat and magic concerns?"
-    )
 
 
 if __name__ == "__main__":

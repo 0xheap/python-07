@@ -8,11 +8,10 @@ from ex1.SpellCard import SpellCard
 
 
 def main() -> None:
-    print("=== DataDeck Deck Builder ===")
+    print("=== DataDeck Deck Builder ===\n")
     print("Building deck with different card types...")
     game_states = {'mana': 10}
     deck = Deck()
-    deck.add_card(CreatureCard("Fire Dragon", 5, "Legendary", 7, 5))
     deck.add_card(SpellCard("Lightning Bolt", 3, "Common", "damage"))
     artifact = ArtifactCard(
         "Mana Crystal",
@@ -22,10 +21,10 @@ def main() -> None:
         "Permanent: +1 mana per turn"
     )
     deck.add_card(artifact)
-
+    deck.add_card(CreatureCard("Fire Dragon", 5, "Legendary", 7, 5))
     print(f"Deck stats: {deck.get_deck_stats()}")
 
-    print("\nDrawing and playing cards:")
+    print("\nDrawing and playing cards:\n")
     for _ in range(3):
         card = deck.draw_card()
         card_type = "Creature" if isinstance(card, CreatureCard) else (
@@ -33,9 +32,10 @@ def main() -> None:
         )
         print(f"Drew: {card.name} ({card_type})")
         print(f"Play result: {card.play(game_states)}")
+        print()
 
     print(
-        "\nPolymorphism in action: Same interface, different card behaviors!"
+        "Polymorphism in action: Same interface, different card behaviors!"
     )
 
 
