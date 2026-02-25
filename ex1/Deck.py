@@ -25,7 +25,7 @@ class Deck:
         for i, card in enumerate(self._cards):
             if card.name == card_name:
                 self._cards.pop(i)
-                return True 
+                return True
         return False
 
     def shuffle(self) -> None:

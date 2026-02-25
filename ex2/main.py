@@ -6,7 +6,9 @@ from ex2.EliteCard import EliteCard
 def main() -> None:
     print("=== DataDeck Ability System ===")
 
-    card = EliteCard("Arcane Warrior", 4, "Legendary", attack=5, defense=3, base_mana=4)
+    card = EliteCard(
+        "Arcane Warrior", 4, "Legendary", attack=5, defense=3, base_mana=4
+    )
 
     print("EliteCard capabilities:")
     print("- Card: ['play', 'get_card_info', 'is_playable']")

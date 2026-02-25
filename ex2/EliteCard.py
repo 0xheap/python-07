@@ -27,20 +27,19 @@ class EliteCard(Card, Combatable, Magical):
     def play(self, game_state: dict[str, Any]) -> dict[str, Any]:
         """Play the Elite card onto the battlefield."""
         available_mana = game_state.get('mana', 0)
-        
+
         if not self.is_playable(available_mana):
             return {
                 'error': 'Not enough mana to play this card.',
                 'playable': False
             }
-            
+
         return {
             "card_played": self.name,
             "mana_used": self.cost,
             "effect": "Elite card deployed"
         }
 
-    # --- From Combatable Interface ---
     def attack(self, target: Any) -> dict[str, Any]:
         """Attack a target."""
         return {
@@ -68,7 +67,9 @@ class EliteCard(Card, Combatable, Magical):
         }
 
     # --- From Magical Interface ---
-    def cast_spell(self, spell_name: str, targets: list[Any]) -> dict[str, Any]:
+    def cast_spell(
+        self, spell_name: str, targets: list[Any]
+    ) -> dict[str, Any]:
         """Cast a spell on the given targets."""
         mana_cost = 4  # Simple fixed cost for demonstration
         return {

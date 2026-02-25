@@ -15,7 +15,9 @@ class GameEngine:
         self._turns_simulated = 0
         self._total_damage = 0
 
-    def configure_engine(self, factory: CardFactory, strategy: GameStrategy) -> None:
+    def configure_engine(
+        self, factory: CardFactory, strategy: GameStrategy
+    ) -> None:
         """Set the card factory and strategy used by the engine."""
         self._factory = factory
         self._strategy = strategy
@@ -23,9 +25,11 @@ class GameEngine:
         self._total_damage = 0
 
     def simulate_turn(self) -> dict[str, Any]:
-        """Create a hand using the factory and execute a single aggressive turn."""
+        """Create hand via factory and execute a single turn."""
         if self._factory is None or self._strategy is None:
-            raise ValueError("Engine is not configured with factory and strategy")
+            raise ValueError(
+                "Engine is not configured with factory and strategy"
+            )
 
         hand = [
             self._factory.create_creature("dragon"),
@@ -47,10 +51,11 @@ class GameEngine:
 
     def get_engine_status(self) -> dict[str, Any]:
         """Return a simple engine status report."""
-        strategy_name = self._strategy.get_strategy_name() if self._strategy else None
+        strategy_name = (
+            self._strategy.get_strategy_name() if self._strategy else None
+        )
         return {
             "turns_simulated": self._turns_simulated,
             "strategy_used": strategy_name,
             "total_damage": self._total_damage,
         }
-

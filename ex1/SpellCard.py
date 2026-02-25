@@ -6,7 +6,7 @@ from ex0.Card import Card
 
 
 class SpellCard(Card):
-    """Spell with effect_type (damage, heal, buff, debuff). Consumed when played."""
+    """Spell with effect_type (damage, heal, buff, debuff). Consumed."""
 
     def __init__(
         self,
@@ -19,21 +19,22 @@ class SpellCard(Card):
         self.effect_type = effect_type
 
     def play(self, game_state: dict[str, Any]) -> dict[str, Any]:
-            """Describe playing this spell (one-time use)."""
-            available_mana = game_state.get('mana', 0)
-            
-            if not self.is_playable(available_mana):
-                return {
-                    'error': 'Not enough mana to play this card.',
-                    'playable': False
-                }
-                
-            effect_msg = self._effect_description()
+        """Describe playing this spell (one-time use)."""
+        available_mana = game_state.get('mana', 0)
+
+        if not self.is_playable(available_mana):
             return {
-                "card_played": self.name,
-                "mana_used": self.cost,
-                "effect": effect_msg,
+                'error': 'Not enough mana to play this card.',
+                'playable': False
             }
+
+        effect_msg = self._effect_description()
+        return {
+            "card_played": self.name,
+            "mana_used": self.cost,
+            "effect": effect_msg,
+        }
+
     def _effect_description(self) -> str:
         """Build effect string from effect_type and card name/cost."""
         if self.effect_type == "damage":

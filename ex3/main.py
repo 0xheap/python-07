@@ -18,7 +18,7 @@ def main() -> None:
     print(f"Strategy: {strategy.get_strategy_name()}")
     print(f"Available types: {factory.get_supported_types()}")
 
-    print("\nSimulating aggressive turn...")
+    print("Simulating aggressive turn...")
     sim_result = engine.simulate_turn()
     hand_desc = ", ".join(sim_result["hand"])
     print(f"Hand: [{hand_desc}]")
@@ -26,7 +26,7 @@ def main() -> None:
     actions = sim_result["turn_result"]
     print("Turn execution:")
     print(f"Strategy: {strategy.get_strategy_name()}")
-    
+
     actions_dict = {
         "cards_played": actions["cards_played"],
         "mana_used": actions["mana_used"],
@@ -41,7 +41,7 @@ def main() -> None:
         "turns_simulated": report["turns_simulated"],
         "strategy_used": report["strategy_used"],
         "total_damage": report["total_damage"],
-        "cards_created": report.get("cards_created", 3),  # Ensure it prints correctly
+        "cards_created": report.get("cards_created", 3),
     }
     print(report_dict)
 

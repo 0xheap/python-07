@@ -6,7 +6,7 @@ from ex0.Card import Card
 
 
 class ArtifactCard(Card):
-    """Permanent with durability and an effect. Stays in play until destroyed."""
+    """Permanent with durability and effect. Stays in play until destroyed."""
 
     def __init__(
         self,
@@ -24,10 +24,10 @@ class ArtifactCard(Card):
         """Describe playing this artifact (permanent)."""
         available_mana = game_state.get('mana', 0)
         if not self.is_playable(available_mana):
-                    return {
-                        'error': 'Not enough mana to play this card.',
-                        'playable': False
-                    }
+            return {
+                'error': 'Not enough mana to play this card.',
+                'playable': False
+            }
         return {
             "card_played": self.name,
             "mana_used": self.cost,

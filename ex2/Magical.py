@@ -8,7 +8,9 @@ class Magical(ABC):
     """Interface for magic: cast spell, channel mana, magic stats."""
 
     @abstractmethod
-    def cast_spell(self, spell_name: str, targets: list[Any]) -> dict[str, Any]:
+    def cast_spell(
+        self, spell_name: str, targets: list[Any]
+    ) -> dict[str, Any]:
         """Cast a spell on targets. Returns result dict."""
         ...
 

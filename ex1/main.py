@@ -14,7 +14,14 @@ def main() -> None:
     deck = Deck()
     deck.add_card(CreatureCard("Fire Dragon", 5, "Legendary", 7, 5))
     deck.add_card(SpellCard("Lightning Bolt", 3, "Common", "damage"))
-    deck.add_card(ArtifactCard("Mana Crystal", 2, "Rare", 3, "Permanent: +1 mana per turn"))
+    artifact = ArtifactCard(
+        "Mana Crystal",
+        2,
+        "Rare",
+        3,
+        "Permanent: +1 mana per turn"
+    )
+    deck.add_card(artifact)
 
     print(f"Deck stats: {deck.get_deck_stats()}")
 
@@ -27,7 +34,9 @@ def main() -> None:
         print(f"Drew: {card.name} ({card_type})")
         print(f"Play result: {card.play(game_states)}")
 
-    print("\nPolymorphism in action: Same interface, different card behaviors!")
+    print(
+        "\nPolymorphism in action: Same interface, different card behaviors!"
+    )
 
 
 if __name__ == "__main__":

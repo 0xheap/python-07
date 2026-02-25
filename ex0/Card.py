@@ -1,11 +1,20 @@
 """Abstract base class for all DataDeck cards."""
 
 from abc import ABC, abstractmethod
+from enum import Enum
 from typing import Any
 
 
+class CardType(str, Enum):
+    """Enumeration of card types."""
+
+    CREATURE = "Creature"
+    SPELL = "Spell"
+    ARTIFACT = "Artifact"
+
+
 class Card(ABC):
-    """Universal card blueprint. All card types must inherit and implement play()."""
+    """Universal card blueprint. All types inherit and implement play()."""
 
     def __init__(self, name: str, cost: int, rarity: str) -> None:
         self.name = name

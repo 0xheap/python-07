@@ -14,7 +14,9 @@ class AggressiveStrategy(GameStrategy):
     def __init__(self, mana_budget: int = 10) -> None:
         self._mana_budget = mana_budget
 
-    def execute_turn(self, hand: list[Card], battlefield: list[Any]) -> dict[str, Any]:
+    def execute_turn(
+        self, hand: list[Card], battlefield: list[Any]
+    ) -> dict[str, Any]:
         """
         Play low-cost cards from hand until mana budget is used.
         """
@@ -30,7 +32,7 @@ class AggressiveStrategy(GameStrategy):
         for card in sorted_hand:
             if mana_used + card.cost > self._mana_budget:
                 continue
-            
+
             mana_used += card.cost
             cards_played.append(card.name)
 
@@ -62,5 +64,8 @@ class AggressiveStrategy(GameStrategy):
         Prioritize the enemy player if present, otherwise keep original order.
         """
         if "Enemy Player" in available_targets:
-            return ["Enemy Player"] + [t for t in available_targets if t != "Enemy Player"]
+            other_targets = [
+                t for t in available_targets if t != "Enemy Player"
+            ]
+            return ["Enemy Player"] + other_targets
         return available_targets

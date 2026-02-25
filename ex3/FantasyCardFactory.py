@@ -27,7 +27,7 @@ class FantasyCardFactory(CardFactory):
         """Create a fantasy creature: dragon or goblin."""
         creatures: dict[str, CreatureCard] = {
             "dragon": CreatureCard("Fire Dragon", 5, "Legendary", 7, 5),
-            "goblin": CreatureCard("Goblin Warrior", 2, "Common", 2, 1),
+            "goblin": CreatureCard("Goblin Warrior", 2, "Common", 5, 1),
         }
         names = list(creatures.keys())
 
@@ -83,7 +83,11 @@ class FantasyCardFactory(CardFactory):
         Mix creatures, spells, and artifacts using this factory.
         """
         cards: list[Card] = []
-        creators = [self.create_creature, self.create_spell, self.create_artifact]
+        creators = [
+            self.create_creature,
+            self.create_spell,
+            self.create_artifact,
+        ]
 
         for i in range(size):
             creator = creators[i % len(creators)]
@@ -95,5 +99,4 @@ class FantasyCardFactory(CardFactory):
         }
 
     def get_supported_types(self) -> dict[str, Any]:
-        """Return supported creature, spell, and artifact types."""
         return self._supported_types.copy()

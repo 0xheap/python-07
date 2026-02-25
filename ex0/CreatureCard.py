@@ -2,7 +2,7 @@
 
 from typing import Any
 
-from ex0.Card import Card
+from ex0.Card import Card, CardType
 
 
 class CreatureCard(Card):
@@ -28,10 +28,10 @@ class CreatureCard(Card):
         """Describe playing this creature."""
         available_mana = game_state.get('mana', 0)
         if not self.is_playable(available_mana):
-                    return {
-                        'error': 'Not enough mana to play this card.',
-                        'playable': False
-                    }
+            return {
+                'error': 'Not enough mana to play this card.',
+                'playable': False
+            }
         return {
             "card_played": self.name,
             "mana_used": self.cost,
@@ -41,7 +41,7 @@ class CreatureCard(Card):
     def get_card_info(self) -> dict[str, Any]:
         """Base card info plus creature type, attack, and health."""
         info = super().get_card_info()
-        info["type"] = "Creature"
+        info["type"] = CardType.CREATURE.value
         info["attack"] = self.attack
         info["health"] = self.health
         return info
